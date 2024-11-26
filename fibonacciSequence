@@ -1,0 +1,27 @@
+			MOV		R0, #6 ; initialize R0 to Fibonacci number to compute
+			MOV		R2, #0 ; initialize R2 to 0
+			MOV		R3, #1 ; initialize R3 to 1
+			
+			CMP		R0, #0 ; check if n == 0
+			BEQ		BASE_CASE_0 ; if n == 0, jump to base case 0
+			
+			CMP		R0, #1 ; check if n == 1
+			BEQ		BASE_CASE_1 ; if n == 1, jump to base case 1
+			
+			SUBS		R0, R0, #1 ; decrement n by 1
+			
+LOOP
+			ADD		R1, R2, R3 ; calculate F(n) = F(n - 1) + F(n - 2)
+			MOV		R2, R3 ; update F(n - 2) to F(n - 1)
+			MOV		R3, R1 ; update F(n - 1) to F(n)
+			SUBS		R0, R0, #1 ; decrement n
+			BNE		LOOP ; repeat until n == 0
+			END ; exit program
+			
+BASE_CASE_0
+			MOV		R1, #0 ; F(0) = 0
+			END ; exit program
+			
+BASE_CASE_1
+			MOV		R1, #1 ; F(1) = 1
+			END ; exit programD
